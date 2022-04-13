@@ -96,18 +96,18 @@ jobs:
           env_url: https://${{ steps.set-domain.outputs.domain }}/storybook/index.html
           deployment_id: ${{ steps.storybook-deployment.outputs.deployment_id }}
 
-  Comment: >
-    - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ secrets.AWS_DEFAULT_REGION }}
 
-      - name: Deploy to S3
-        run: |
-          aws s3 sync ./build/dashboard s3://${{ secrets.AWS_TEST_DEPLOYMENT_BUCKET }}/${{ steps.set-domain.outputs.domain }}
-          aws s3 sync ./build/storybook s3://${{ secrets.AWS_TEST_DEPLOYMENT_BUCKET }}/${{ steps.set-domain.outputs.domain }}/storybook
+#      - name: Configure AWS credentials
+#        uses: aws-actions/configure-aws-credentials@v1
+#        with:
+#          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          #          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          #aws-region: ${{ secrets.AWS_DEFAULT_REGION }}
 
-      - name: Invalidate cache
-        run: aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_TEST_CF_DIST_ID }} --paths "/${{ steps.set-domain.outputs.domain }}/*"
+        #- name: Deploy to S3
+          #run: |
+          #aws s3 sync ./build/dashboard s3://${{ secrets.AWS_TEST_DEPLOYMENT_BUCKET }}/${{ steps.set-domain.outputs.domain }}
+          #aws s3 sync ./build/storybook s3://${{ secrets.AWS_TEST_DEPLOYMENT_BUCKET }}/${{ steps.set-domain.outputs.domain }}/storybook
+
+        #- name: Invalidate cache
+        #run: aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_TEST_CF_DIST_ID }} --paths "/${{ steps.set-domain.outputs.domain }}/*"
