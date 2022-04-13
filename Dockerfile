@@ -1,5 +1,5 @@
 # Sets node:alpine as the builder.
-FROM node:latest as builder
+FROM node:14 as builder
 
 # Updates and installs required Linux dependencies.
 RUN set -eux \
