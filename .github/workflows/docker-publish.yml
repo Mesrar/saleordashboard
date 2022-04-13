@@ -51,7 +51,7 @@ jobs:
 
           context: ./
           platforms: linux/amd64, linux/arm64
-          tags: ariellahiany/dashboard:latest
+          tags: mesrarbrand/dashboard:latest
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache-new
           push: true
@@ -63,10 +63,10 @@ jobs:
           rm -rf /tmp/.buildx-cache
           mv /tmp/.buildx-cache-new /tmp/.buildx-cache
 
-#      - name: Notification
-#        id: notification
-#        uses: rtCamp/action-slack-notify@v2
-#        env:
-#          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-#          SLACK_COLOR: ${{ job.status }}
-#          SLACK_ICON_EMOJI: ":robot_face:"
+      - name: Notification
+        id: notification
+        uses: rtCamp/action-slack-notify@v2
+        env:
+           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+           SLACK_COLOR: ${{ job.status }}
+           SLACK_ICON_EMOJI: ":robot_face:"
