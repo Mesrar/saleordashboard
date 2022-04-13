@@ -1,3 +1,5 @@
+on: [pull_request]
+
 Comment : > 
   name: TEST-ENV-DEPLOYMENT
   # Build and deploy test instance for every pull request
