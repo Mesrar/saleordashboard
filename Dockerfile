@@ -28,7 +28,7 @@ ENV STATIC_URL ${STATIC_URL:-/dashboard/}
 
 # Defines URI of a running instance of the Saleor GraphQL API.
 ARG API_URI
-ENV API_URI ${API_URI:-http://localhost:30080/graphql/}
+ENV API_URI ${API_URI:-http://django:8000/graphql/}
 
 # Executes npm build script.
 RUN STATIC_URL=${STATIC_URL} API_URI=${API_URI} APP_MOUNT_URI=${APP_MOUNT_URI} npm run build

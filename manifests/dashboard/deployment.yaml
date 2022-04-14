@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
         - name: dashboard
-          image: ariellahiany/dashboard:latest
+          image: mesrarbrand/dashboard:latest
           imagePullPolicy: Always
           ports:
             - name: dashboard
